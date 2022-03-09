@@ -172,8 +172,8 @@ namespace Azure.SQL.DB.Hyperscale.Tools
                 if (usageInfo.MovingAvgCpuPercent < autoscalerConfig.LowThreshold)
                 //if (usageInfo.MovingAvgCpuPercent < 1)
                 {
-                    //targetSlo = GetServiceObjective(currentSlo, SearchDirection.Previous);
-                    targetSlo = "HS_GEN5_6";
+                    targetSlo = GetServiceObjective(currentSlo, SearchDirection.Previous);
+                   // targetSlo = "hs_gen5_6";
                     if (targetSlo != null && currentSlo.Cores > autoscalerConfig.vCoreMin && currentSlo != targetSlo)
                     {
                         log.LogInformation($"LOW threshold reached: scaling down to {targetSlo}");
