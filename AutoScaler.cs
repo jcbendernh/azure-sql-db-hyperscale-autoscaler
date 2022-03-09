@@ -158,7 +158,6 @@ namespace Azure.SQL.DB.Hyperscale.Tools
 
                 // Scale Up
                 if (usageInfo.MovingAvgCpuPercent > autoscalerConfig.HighThreshold)
-                //if (usageInfo.MovingAvgCpuPercent > 5)
                 {
                     targetSlo = GetServiceObjective(currentSlo, SearchDirection.Next);
                     if (targetSlo != null && currentSlo.Cores < autoscalerConfig.vCoreMax && currentSlo != targetSlo)
@@ -170,10 +169,8 @@ namespace Azure.SQL.DB.Hyperscale.Tools
 
                 // Scale Down
                 if (usageInfo.MovingAvgCpuPercent < autoscalerConfig.LowThreshold)
-                //if (usageInfo.MovingAvgCpuPercent < 1)
                 {
                     targetSlo = GetServiceObjective(currentSlo, SearchDirection.Previous);
-                   // targetSlo = "hs_gen5_6";
                     if (targetSlo != null && currentSlo.Cores > autoscalerConfig.vCoreMin && currentSlo != targetSlo)
                     {
                         log.LogInformation($"LOW threshold reached: scaling down to {targetSlo}");
@@ -200,7 +197,7 @@ namespace Azure.SQL.DB.Hyperscale.Tools
         {
             var targetSLO = currentSLO;
             var availableSlos = HyperscaleSLOs[currentSLO.Generation];
-            var index = availableSlos.IndexOf(currentSLO.ToString());
+            var index = availableSlos.IndexOf(currentSLO.ToString().ToLower());
 
             if (direction == SearchDirection.Next && index < availableSlos.Count)
                 targetSLO = HyperScaleTier.Parse(availableSlos[index + 1]);
