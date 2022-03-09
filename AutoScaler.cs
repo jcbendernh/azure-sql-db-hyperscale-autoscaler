@@ -99,16 +99,16 @@ namespace Azure.SQL.DB.Hyperscale.Tools
 
     public static class AutoScaler
     {
-        public static readonly List<String> GEN4 = new List<String>() { "hs_gen4_1", "hs_gen4_2", "hs_gen4_3", "hs_gen4_4", "hs_gen4_5", "hs_gen4_6", "hs_gen4_7", "hs_gen4_8", "hs_gen4_9", "hs_gen4_10", "hs_gen4_16", "hs_gen4_24" };
+        public static readonly List<String> Gen4 = new List<String>() { "hs_gen4_1", "hs_gen4_2", "hs_gen4_3", "hs_gen4_4", "hs_gen4_5", "hs_gen4_6", "hs_gen4_7", "hs_gen4_8", "hs_gen4_9", "hs_gen4_10", "hs_gen4_16", "hs_gen4_24" };
 
-        public static readonly List<String> GEN5 = new List<String>() { "HS_Gen5_2", "HS_Gen5_4", "HS_Gen5_6", "HS_Gen5_8", "HS_Gen5_10", "HS_Gen5_12", "HS_Gen5_14", "HS_Gen5_16", "HS_Gen5_18", "HS_Gen5_20", "HS_Gen5_24", "HS_Gen5_32", "HS_Gen5_40", "HS_Gen5_80" };
+        public static readonly List<String> Gen5 = new List<String>() { "HS_Gen5_2", "HS_Gen5_4", "HS_Gen5_6", "HS_Gen5_8", "HS_Gen5_10", "HS_Gen5_12", "HS_Gen5_14", "HS_Gen5_16", "HS_Gen5_18", "HS_Gen5_20", "HS_Gen5_24", "HS_Gen5_32", "HS_Gen5_40", "HS_Gen5_80" };
 
         public static Dictionary<int, List<String>> HyperscaleSLOs = new Dictionary<int, List<String>>();
 
         static AutoScaler()
         {
-            HyperscaleSLOs.Add(4, GEN4);
-            HyperscaleSLOs.Add(5, GEN5);
+            HyperscaleSLOs.Add(4, Gen4);
+            HyperscaleSLOs.Add(5, Gen5);
         }
 
         [FunctionName("AutoScaler")]
